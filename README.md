@@ -68,4 +68,14 @@ mkdocs.yml                    the theme, and the nav
 
 ## License
 
-To be decided with the other three repositories.
+Two, because this repository holds two kinds of thing.
+
+The **code** (`scripts/screenshots.py`, `mkdocs.yml`, the stylesheet) is
+**Apache-2.0**: [LICENSE](LICENSE).
+
+The **documentation** (everything under `docs/`, text and images) is
+**CC BY 4.0**: [LICENSE-DOCS](LICENSE-DOCS). Reuse it, including commercially,
+as long as you credit it.
+
+Copyright 2026 Pierre St-Cricq dit Lompre (SOCIB), as part of the OSTrails
+project.
