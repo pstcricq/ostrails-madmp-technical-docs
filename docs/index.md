@@ -71,3 +71,15 @@ result.
 | `madmp-core` | 1.0.0 |
 | Data Stewardship Wizard | 4.31 |
 | Rules standards | `rda_dcs` 1.0.0, `ostrails` 1.0.0 |
+
+## Licensing
+
+| Repository | Holds | Licence |
+|---|---|---|
+| `madmp-core` | code | Apache-2.0 |
+| `madmp-dsw` | code, derived from an MIT deployment example | Apache-2.0, upstream notice in `NOTICE` |
+| `madmp-registry` | data | CC BY 4.0 |
+| this site | code and prose | Apache-2.0 for the code, CC BY 4.0 for `docs/` |
+
+Copyright 2026 Pierre St-Cricq dit Lompre (SOCIB), as part of the OSTrails
+project. Attribution is required everywhere, and nothing carries a warranty.

@@ -225,11 +225,6 @@ wrong even though its value is right. Flagged, not moved.
 **`api_url` on the GitHub client is configurable and unused.** It would allow
 GitHub Enterprise. Nothing passes it, the tests included.
 
-**madmp-core has no LICENSE file.** `madmp-dsw` carries one, `madmp-registry`
-and this documentation repository do not either. The project configs declare
-`license: "CC BY 4.0"` for the generated packages, which is a different thing
-from the licence of the code that generates them.
-
 **Mail is disabled**, and the `mailer` service is commented out rather than
 deleted, because enabling one without the other fails silently: the server
 queues commands nobody processes and the interface still reports the message as
