@@ -11,9 +11,14 @@ theme:
   name: material
   language: en
   features:
+    # One tab per repository. The first question a reader has is which of the
+    # three they are in, and a tab answers it without them reading anything.
+    # The side list then only ever holds the pages of the repository they are
+    # already in, which is what makes it short.
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.instant
     - navigation.tracking
-    - navigation.sections
     - navigation.top
     - navigation.footer
     - toc.follow
