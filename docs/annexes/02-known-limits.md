@@ -217,11 +217,6 @@ rejected rather than degraded.
 
 ## Rough edges
 
-**`RULES_DIR` is defined in `project/assemble.py`** and imported from there by
-`quality_control/run.py` and `submission/service.py`, neither of which assembles
-anything. It is the resource root, not an assembly concern, so its placement is
-wrong even though its value is right. Flagged, not moved.
-
 **`api_url` on the GitHub client is configurable and unused.** It would allow
 GitHub Enterprise. Nothing passes it, the tests included.
 
