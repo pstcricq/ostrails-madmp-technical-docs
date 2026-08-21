@@ -1,0 +1,17 @@
+# The documentation site and the tooling that builds it. Not a library: nothing
+# here is imported by another repository, so there is no package to declare.
+[project]
+name = "madmp-technical-docs"
+version = "1.0.0"
+description = "Technical reference for madmp-core, madmp-dsw and madmp-registry."
+requires-python = ">=3.12"
+dependencies = [
+    "mkdocs-material>=9",       # the theme, and the markdown extensions it needs
+    "mkdocs-glightbox>=0.4",    # click a screenshot to see it full size
+]
+
+# Playwright drives a headless Chromium to regenerate every screenshot under
+# docs/img/. Only `scripts/screenshots.py` uses it, and only against a running
+# DSW, so it is not needed to build the site.
+[dependency-groups]
+dev = ["playwright>=1.40"]

@@ -1,0 +1,13 @@
+/* Screenshots are captured at 1280x800 and doubled, so they arrive twice the
+   size they are shown at. Bounding them keeps a full-width picture from
+   dwarfing the paragraph that introduces it, and glightbox gives the reader
+   the real size on click. */
+.md-typeset img {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 3px;
+}
+
+/* Field tables carry a path in the first column, which reads badly wrapped. */
+.md-typeset table td:first-child code {
+  white-space: nowrap;
+}

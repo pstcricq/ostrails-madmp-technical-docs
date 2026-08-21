@@ -1,0 +1,50 @@
+name: Deploy
+
+# Two jobs and not one, unlike a plain docs site: `build` runs on every push
+# and every pull request, so a broken link is caught where it was written,
+# while `deploy` only ever runs on the default branch.
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: astral-sh/setup-uv@v10.0.1
+        with:
+          python-version: "3.12"
+      - name: Install the locked environment
+        run: uv sync --frozen
+      # --strict turns a warning into a failure. A link to a page that was
+      # renamed is the whole reason this job exists.
+      - name: Build the site
+        run: uv run mkdocs build --strict
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@v5
+      - id: deployment
+        uses: actions/deploy-pages@v4

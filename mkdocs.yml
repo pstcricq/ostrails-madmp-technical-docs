@@ -1,0 +1,98 @@
+site_name: maDMP Technical Reference
+site_description: >-
+  How madmp-core, madmp-dsw and madmp-registry are built and how they fit
+  together: the rules, the generators, the deployment, the webhook and the
+  registry, part by part.
+site_url: https://pstcricq.github.io/ostrails-madmp-technical-docs/
+repo_url: https://github.com/pstcricq/ostrails-madmp-technical-docs
+edit_uri: ""
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.sections
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - content.code.copy
+    - search.suggest
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: teal
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+# One section per repository, because the first question a reader has is which
+# of the three they are in. Pages are numbered inside their section and the
+# numbers match the file names, so a page cannot drift from its own label.
+nav:
+  - At a glance: index.md
+  - madmp-core:
+      - 1. Overview: core/01-overview.md
+      - 2. rules/: core/02-rules.md
+      - 3. configs/: core/03-configs.md
+      - 4. project/: core/04-project.md
+      - 5. The UUID convention: core/05-uuids.md
+      - 6. Generating the Knowledge Model: core/06-knowledge-model.md
+      - 7. Generating the document template: core/07-document-template.md
+      - 8. Publishing to DSW: core/08-publish.md
+      - 9. quality_control/: core/09-quality-control.md
+      - 10. submission/: core/10-submission.md
+      - 11. registry/ and scripts/: core/11-registry.md
+      - 12. Tests, tooling and CI: core/12-engineering.md
+  - madmp-dsw:
+      - 1. The stack: dsw/01-stack.md
+      - 2. Configuration: dsw/02-configuration.md
+      - 3. Installing the webhook: dsw/03-webhook.md
+      - 4. Operating it: dsw/04-operations.md
+  - madmp-registry:
+      - 1. The layout: registry/01-layout.md
+      - 2. The three files: registry/02-files.md
+      - 3. Who writes what: registry/03-writers.md
+  - Annexes:
+      - 1. An end-to-end run: annexes/01-end-to-end.md
+      - 2. Known limits: annexes/02-known-limits.md
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+plugins:
+  - search
+  - glightbox:
+      touchNavigation: true
+      loop: false
+      effect: fade
+      draggable: false
+
+extra_css:
+  - stylesheets/extra.css
+
+copyright: >-
+  Pierre St-Cricq dit Lompre, SOCIB, as part of the OSTrails project.
+  Funded by the European Union.

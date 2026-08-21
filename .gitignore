@@ -1,0 +1,7 @@
+# The built site. Rebuilt by `mkdocs build`, published by CI, never versioned.
+site/
+
+# Environment
+.venv/
+__pycache__/
+.DS_Store
