@@ -128,6 +128,20 @@ project actually needs and nothing more:
 | `branch_head()` | the webhook |
 | `commit_files()` | the webhook |
 
+!!! danger "A GitHub 404 means \"file absent\" only on a read"
+    On a **write**, a 404 means the repository or the token's access is wrong.
+    GitHub answers 404 rather than 403 so as not to confirm that a private
+    repository exists, and it must never pass for a success.
+
+    That is the one asymmetry of the transport, and it is tested in both
+    directions.
+
+The transport stops there. It returns and takes **bytes**: base64 and status
+codes are its business alone, which is why no module that means anything
+imports `base64`. The webhook still did before the two clients were merged, to
+decode what its read handed back raw, and that was the transport's encoding
+leaking into a module of meaning.
+
 !!! warning "create_file() is a creation and not a replacement"
     ```python
     """(!!) A creation, and not a replacement. No ``sha`` is sent, so GitHub

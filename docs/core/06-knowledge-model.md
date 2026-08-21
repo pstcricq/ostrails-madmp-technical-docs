@@ -156,6 +156,39 @@ did not originally carry.
 One phase, **Required fields**, so a researcher can ask DSW to show what is
 still missing before the plan can be submitted at all.
 
+## Every question carries its rules path
+
+Each question is emitted with an annotation tracing it back to the rules field
+it came from, so a consumer can relate a reply to the path it fills. That is
+what a quality control reading a submitted DMP needs.
+
+**Every question, the item template of a repeated scalar included.** That last
+part is worth spelling out, because the obvious reading is the wrong one.
+
+On a `value_multi`, the `ListQuestion`'s reply is the list of item uuids. The
+**value** is stored against the item template, under
+`<list>.<item>.<template>`. That is what the document template reads, and so it
+is the only entity a consumer meets while walking the replies. Leaving it
+unannotated leaves the only entity that carries a value without a path: four
+fields of the glider project were in that case, and their replies could not be
+placed.
+
+So the item template carries the path of its field, the same path as the list
+that contains it. Two entities naming one field, which is the truth of a
+repeated scalar: DSW has no other way of wanting a value several times, so a
+wrapper is needed. They stay distinguishable by their type and their parentage,
+and the quality control's dotted paths (`dmp.dataset[].title`) give an element
+no separate path either.
+
+!!! note "One thing is deliberately unannotated"
+    The general chapter, which is ours and not a standard's. A chapter is
+    allowed to have no path. A **question** is not: it was asked because a
+    rules field asked for it.
+
+    The test that holds this walks the **events**, not the fields. The version
+    that walked the fields could not see a question that no field asks for,
+    which is exactly the case that mattered.
+
 ## The README each package carries
 
 Generated too, from the config: the project name and description at the top, a

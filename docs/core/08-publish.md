@@ -64,6 +64,15 @@ Nothing downstream catches that. The listing is asked about the new id, answers
 with. Publishing is the one step with no undo, so the bundle's declared id is
 confronted with the config's before a single byte is uploaded.
 
+## Pagination is not an optimisation
+
+`list_all()` follows the page count instead of trusting one large page.
+
+A truncated listing would answer "not published" about something that **is**,
+and that answer is what decides whether a package is published again. So the
+paging is a correctness concern, not a performance one, and asking for a
+generous page size would not replace it.
+
 ## The submission service is an upsert, and a whole-config write
 
 A submission service is an entry in the tenant's configuration: mutable, keyed

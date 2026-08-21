@@ -144,6 +144,32 @@ presence check and its type check. A string of spaces, on the other hand, stays
 a value: that is content someone typed. The reasoning is in
 [9. quality_control/](09-quality-control.md).
 
+### A boolean has no empty string, so it renders null
+
+A scalar says "supplied, empty" with `""`. A boolean has no such value, and it
+used to say `false`.
+
+!!! danger "false is not a silence, it is an answer"
+    "Nobody answered" and "the answer is no" produced the same document, on
+    fields like `is_reused` where the two statements have nothing to do with
+    each other.
+
+Three states, so three values: `true`, `false`, and `null` for unanswered. The
+quality control reads `null` the way it reads `""`, as an absence, and the key
+is still emitted, because it is the key that says the field is missing.
+
+The price is accepted rather than hidden: `null` is not a valid boolean under a
+standard's own schema. But `""` does not satisfy a required title either, and it
+is the same doctrine that accepts it. Between a document that is **provably
+incomplete** and a document that calmly asserts something nobody said, take the
+first.
+
+!!! note "Fixed before it was reachable"
+    No standard on disk declares a required boolean: `dmp.dataset[].is_reused`
+    is `0..1`. But `0..1 → 1` is a **tightening the merge allows**, so an
+    extension could have switched this on without a line of code and without
+    anything going red.
+
 ## Formats
 
 `FORMATS` is one list describing every output format the template knows of,
