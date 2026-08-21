@@ -11,7 +11,7 @@ cp .env.example .env
 The values that already carry one work as they stand. The empty ones have no
 default, and each is described where it sits in the file.
 
-## The nineteen values
+## The twenty values
 
 | Block | Variable | Secret | Default |
 |---|---|---|---|
